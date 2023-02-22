@@ -1,0 +1,628 @@
+<?xml version="1.0" ?> 
+<!-- 
+  ========================================
+    * Author: nipun.dhananjaya@gmail.com
+    * Created: 04.02.2023
+  ========================================
+ -->
+<sdf version="1.7">
+
+  <model name='tracer'>
+    <pose>0 0 0.325 0 -0 0</pose>
+
+
+    <!-- Initial Link -->
+    <link name="initial_link">
+      <inertial>
+        <mass>132.3898489950015</mass> <!-- 132.3898489950015 -->
+        <inertia>
+          <ixx>0.185196122711036</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.364893736238929</iyy>
+          <iyz>-0.000386720198091934</iyz>
+          <izz>0.223868521722778</izz>
+        </inertia>
+      </inertial>
+    </link>
+    
+
+    <!-- Base link -->
+    <link name='base_link'>
+      <pose>0 0 0 1.5708 0 0</pose>
+      <visual name='visual'>
+        <geometry>
+            <mesh>
+              <uri>meshes/tracer_base_link_no_wheel.dae</uri>
+            </mesh>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 1.0 1</ambient>
+          <diffuse>0.5 0.5 1.0 1</diffuse>
+          <specular>0.0 0.0 1.0 1</specular>
+        </material>
+      </visual>
+      <collision name='collision'>
+        <geometry>
+          <mesh>
+            <uri>meshes/tracer_base_link_no_wheel.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- (initial, base) joint -->
+    <joint name='initial_joint' type='fixed'>
+      <parent>base_link</parent>
+      <child>initial_link</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+
+    <!-- FL castor link -->
+    <link name="fl_castor_link">
+      <pose>0.18955 0.17 -0.0370886 -1.57 0 0</pose> <!-- z = -0.0380886 -->
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.7171</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.1361</iyy>
+          <iyz>0</iyz>
+          <izz>0.7171</izz>
+        </inertia>
+      </inertial>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>meshes/castor_joint.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 0.5 1</ambient>
+          <diffuse>0.5 0.5 0.5 1</diffuse>
+          <specular>0.2 0.2 0.2 1</specular>
+        </material>
+      </visual>
+    </link>
+
+    <!-- (FL castor, base) joint -->
+    <joint name='fl_castor_joint' type='revolute'>
+      <parent>base_link</parent>
+      <child>fl_castor_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <!-- FR castor link -->
+    <link name="fr_castor_link">
+      <pose>0.18955 -0.17 -0.0370886 -1.57 0 0</pose> <!-- z = -0.0380886 -->
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.7171</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.1361</iyy>
+          <iyz>0</iyz>
+          <izz>0.7171</izz>
+        </inertia>
+      </inertial>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>meshes/castor_joint.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 0.5 1</ambient>
+          <diffuse>0.5 0.5 0.5 1</diffuse>
+          <specular>0.2 0.2 0.2 1</specular>
+        </material>
+      </visual>
+    </link>
+
+    <!-- (FR castor, base) joint -->
+    <joint name='fr_castor_joint' type='revolute'>
+      <parent>base_link</parent>
+      <child>fr_castor_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <!-- RL castor link -->
+    <link name="rl_castor_link">
+      <pose>-0.18955 0.17 -0.0370886 -1.57 0 0</pose> <!-- z = -0.0380886 -->
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.7171</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.1361</iyy>
+          <iyz>0</iyz>
+          <izz>0.7171</izz>
+        </inertia>
+      </inertial>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>meshes/castor_joint.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 0.5 1</ambient>
+          <diffuse>0.5 0.5 0.5 1</diffuse>
+          <specular>0.2 0.2 0.2 1</specular>
+        </material>
+      </visual>
+    </link>
+    
+    <!-- (RL castor, base) joint -->
+    <joint name='rl_castor_joint' type='revolute'>
+      <parent>base_link</parent>
+      <child>rl_castor_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <!-- RR castor link -->
+    <link name="rr_castor_link">
+      <pose>-0.18955 -0.17 -0.0370886 -1.57 0 0</pose> <!-- z = -0.0380886 -->
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.7171</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.1361</iyy>
+          <iyz>0</iyz>
+          <izz>0.7171</izz>
+        </inertia>
+      </inertial>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>meshes/castor_joint.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 0.5 1</ambient>
+          <diffuse>0.5 0.5 0.5 1</diffuse>
+          <specular>0.2 0.2 0.2 1</specular>
+        </material>
+      </visual>
+    </link>
+
+    <!-- (RR castor, base) joint -->
+    <joint name='rr_castor_joint' type='revolute'>
+      <parent>base_link</parent>
+      <child>rr_castor_link</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <!-- FL wheel link -->
+    <link name="fl_wheel_link">
+      <pose relative_to="fl_castor_link">-0.0218084 0.067 0 0 0 0</pose>
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.3131</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.3131</iyy>
+          <iyz>0</iyz>
+          <izz>0.1361</izz>
+        </inertia>
+      </inertial>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>meshes/castor.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+          <specular>0.2 0.2 0.2 1</specular>
+        </material>
+      </visual>
+      <collision name='collision'>
+        <geometry>
+          <mesh>
+            <uri>meshes/castor.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+              <slip1>1</slip1>
+              <slip2>1</slip2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <!-- (FL wheel, FL castor) joint -->
+    <joint name='fl_wheel_joint' type='revolute'>
+      <parent>fl_castor_link</parent>
+      <child>fl_wheel_link</child>
+      <!-- <dynamics></dynamics> -->
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+
+
+    <!-- FR wheel link -->
+    <link name="fr_wheel_link">
+      <pose relative_to="fr_castor_link">-0.0218084 0.067 0 0 0 0</pose>
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.3131</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.3131</iyy>
+          <iyz>0</iyz>
+          <izz>0.1361</izz>
+        </inertia>
+      </inertial>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>meshes/castor.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+          <specular>0.2 0.2 0.2 1</specular>
+        </material>
+      </visual>
+      <collision name='collision'>
+        <geometry>
+          <mesh>
+            <uri>meshes/castor.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+              <slip1>1</slip1>
+              <slip2>1</slip2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <!-- (FR wheel, FR castor) joint -->
+    <joint name='fr_wheel_joint' type='revolute'>
+      <parent>fr_castor_link</parent>
+      <child>fr_wheel_link</child>
+      <!-- <dynamics></dynamics> -->
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+
+
+    <!-- RL wheel link -->
+    <link name="rl_wheel_link">
+      <pose relative_to="rl_castor_link">-0.0218084 0.067 0 0 0 0</pose>
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.3131</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.3131</iyy>
+          <iyz>0</iyz>
+          <izz>0.1361</izz>
+        </inertia>
+      </inertial>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>meshes/castor.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+          <specular>0.2 0.2 0.2 1</specular>
+        </material>
+      </visual>
+      <collision name='collision'>
+        <geometry>
+          <mesh>
+            <uri>meshes/castor.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+              <slip1>1</slip1>
+              <slip2>1</slip2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <!-- (RL wheel, RL castor) joint -->
+    <joint name='rl_wheel_joint' type='revolute'>
+      <parent>rl_castor_link</parent>
+      <child>rl_wheel_link</child>
+      <!-- <dynamics></dynamics> -->
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+
+    <!-- RR wheel link -->
+    <link name="rr_wheel_link">
+      <pose relative_to="rr_castor_link">-0.0218084 0.067 0 0 0 0</pose>
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>0.3131</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.3131</iyy>
+          <iyz>0</iyz>
+          <izz>0.1361</izz>
+        </inertia>
+      </inertial>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>meshes/castor.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+          <specular>0.2 0.2 0.2 1</specular>
+        </material>
+      </visual>
+      <collision name='collision'>
+        <geometry>
+          <mesh>
+            <uri>meshes/castor.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+              <slip1>1</slip1>
+              <slip2>1</slip2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <!-- (RR wheel, RR castor) joint -->
+    <joint name='rr_wheel_joint' type='revolute'>
+      <parent>rr_castor_link</parent>
+      <child>rr_wheel_link</child>
+      <!-- <dynamics></dynamics> -->
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+
+    <!-- tracer right wheel link -->
+    <link name="tracer_Rwheel_link">
+      <pose>0 -0.17 -0.082 0 0 0</pose>
+      <inertial>
+        <mass>6</mass>
+        <inertia>
+          <ixx>0.7171</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.1361</iyy>
+          <iyz>0</iyz>
+          <izz>0.7171</izz>
+        </inertia>
+      </inertial>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>meshes/tracer_wheel.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+          <specular>0.5 0.5 0.5 1</specular>
+        </material>
+      </visual>
+      <collision name='collision'>
+        <geometry>
+          <mesh>
+            <uri>meshes/tracer_wheel.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0.01</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <!-- (Tracer right wheel, base) joint -->
+    <joint name='tracer_Rwheel_joint' type='revolute'>
+      <parent>base_link</parent>
+      <child>tracer_Rwheel_link</child>
+      <!-- <dynamics></dynamics> -->
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+
+    <!-- Tracer left wheel link -->
+    <link name="tracer_Lwheel_link">
+      <pose>0 0.17 -0.082 0 0 0</pose>
+      <inertial>
+        <mass>6</mass>
+        <inertia>
+          <ixx>0.7171</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.1361</iyy>
+          <iyz>0</iyz>
+          <izz>0.7171</izz>
+        </inertia>
+      </inertial>
+      <visual name='visual'>
+        <geometry>
+          <mesh>
+            <uri>meshes/tracer_wheel.dae</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+          <specular>0.5 0.5 0.5 1</specular>
+        </material>
+      </visual>
+      <collision name='collision'>
+        <geometry>
+          <mesh>
+            <uri>meshes/tracer_wheel.dae</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+          <contact>
+            <ode>
+              <soft_cfm>0</soft_cfm>
+              <soft_erp>0.2</soft_erp>
+              <kp>1e+13</kp>
+              <kd>1</kd>
+              <max_vel>0.01</max_vel>
+              <min_depth>0.01</min_depth>
+            </ode>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+
+    <!-- (Tracer left whhel, base) joint -->
+    <joint name='tracer_Lwheel_joint' type='revolute'>
+      <parent>base_link</parent>
+      <child>tracer_Lwheel_link</child>
+      <!-- <dynamics></dynamics> -->
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+
+    
+     <!-- =====================================================================
+        Load Ignition's diff-drive controller, which uses Ignition Transport.
+        The Ignition topics are bridged to ROS with ros_ign_bridge.
+    ======================================================================= -->
+    <plugin
+      filename="ignition-gazebo-diff-drive-system"
+      name="ignition::gazebo::systems::DiffDrive">
+
+      <!-- Wheels -->
+      <left_joint>tracer_Lwheel_joint</left_joint>
+      <right_joint>tracer_Rwheel_joint</right_joint>
+
+      <!-- Kinematics -->
+      <wheel_separation>0.34</wheel_separation>
+      <wheel_radius>0.16</wheel_radius>
+      <odom_publish_frequency>1</odom_publish_frequency>
+    </plugin>
+
+  </model>
+
+</sdf>
