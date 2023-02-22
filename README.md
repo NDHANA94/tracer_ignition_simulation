@@ -1,1 +1,23 @@
 # tracer_ignition_simulation
+
+This package is created and tested only with ros2-foxy version!
+
+### Install package
+```
+mkdir -p tracer_ws/src
+cd src
+git clone https://github.com/NDHANA94/tracer_ignition_simulation.git
+cd ..
+colcon build
+```
+
+### launch ignition gazebo simulation
+```
+source install/setup.bash
+ros2 launch tracer_ign_sim tracer.launch.py
+```
+
+### controlling tracer robot via teleop_twist_keyboard
+```
+ros2 run teleop_twist_keyboard teleop_twist_keyboard -_-ros-args -r /cmd_vel:=/model/tracer/cmd_vel
+```
