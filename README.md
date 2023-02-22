@@ -5,7 +5,7 @@ This package is created and tested only with ros2-foxy version!
 ### Install package
 ```
 mkdir -p tracer_ws/src
-cd src
+cd tracer_ws/src
 git clone https://github.com/NDHANA94/tracer_ignition_simulation.git
 cd ..
 colcon build
