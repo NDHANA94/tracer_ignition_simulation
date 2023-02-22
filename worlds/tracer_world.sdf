@@ -58,8 +58,8 @@
     <scene>
       <ambient>1.0 1.0 1.0 1.0</ambient>
       <background>0.8 0.8 0.8 1.0</background>
-      <grid>false</grid>
-      <origin_visual>false</origin_visual>
+      <grid>true</grid>
+      <origin_visual>true</origin_visual>
     </scene>
 
     <!-- sun -->
