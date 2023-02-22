@@ -21,6 +21,7 @@ ros2 launch tracer_ign_sim tracer.launch.py
 ```
 ros2 run teleop_twist_keyboard teleop_twist_keyboard -_-ros-args -r /cmd_vel:=/model/tracer/cmd_vel
 ```
+
 #### send command via terminal
 ```
 ign topic -t "/model/tracer/cmd_vel" -m ignition.msgs.Twist -p "linear: {x: 0.5}, angular: {z: 0.05}
