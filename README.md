@@ -2,6 +2,12 @@
 
 This package is created and tested only with ros2-foxy version!
 
+### ROS2-foxy install instruction
+https://docs.ros.org/en/foxy/Installation.html
+
+### Ignition (Gazebo Citadel) install instruction
+https://gazebosim.org/docs/citadel/install_ubuntu
+
 ### Install package
 ```
 mkdir -p tracer_ws/src

@@ -46,9 +46,9 @@ def generate_launch_description():
     spawn = Node(package='ros_ign_gazebo', executable='create',
                  arguments=[
                     '-name', 'tracer',
-                    '-x', '5.0',
-                    '-z', '0.46',
-                    '-y', '1.57',
+                    '-x', '0',
+                    '-z', '0.15',
+                    '-y', '0',
                     '-file', os.path.join(pkg_tracer_ign, 'models', 'tracer', 'model.sdf')],
                 output='screen')
     
