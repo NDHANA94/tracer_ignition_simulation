@@ -12,6 +12,7 @@ mkdir -p tracer_ws/src
 cd tracer_ws/src
 git clone https://github.com/NDHANA94/tracer_ignition_simulation.git
 git clone --branch foxy https://github.com/ros-controls/gz_ros2_control.git ign_ros2_control
+rosdep install -r --from-paths . --ignore-src --rosdistro $ROS_DISTRO -y
 cd ..
 export IGNITION_VERSION=fortress
 colcon build
