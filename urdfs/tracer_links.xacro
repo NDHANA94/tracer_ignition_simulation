@@ -1,0 +1,294 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- load meshes -->
+    <xacro:macro name="base_link">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/tracer_base_link_no_wheel.dae"/>
+    </xacro:macro>
+    <xacro:macro name="fl_castor_link">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
+    </xacro:macro>
+    <xacro:macro name="fr_castor_link">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
+    </xacro:macro>
+    <xacro:macro name="rl_castor_link">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
+    </xacro:macro>
+    <xacro:macro name="rr_castor_link">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
+    </xacro:macro>
+    <xacro:macro name="fl_wheel_link">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor.dae"/>
+    </xacro:macro>
+    <xacro:macro name="fr_wheel_link">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor.dae"/>
+    </xacro:macro>
+    <xacro:macro name="rl_wheel_link">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor.dae"/>
+    </xacro:macro>
+    <xacro:macro name="rr_wheel_link">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor.dae"/>
+    </xacro:macro>
+    <xacro:macro name="L_wheel_link">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/tracer_wheel.dae"/>
+    </xacro:macro>
+    <xacro:macro name="R_wheel_link">
+        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/tracer_wheel.dae"/>
+    </xacro:macro>
+
+
+
+    <!-- Initial Link -->
+    <link name="inertial_link">
+        <inertial>
+            <mass value="132.3898489950015"/>
+            <origin xyz="0.015 0  0.0231316650320557"/>
+            <inertia 
+                ixx="0.185196122711036" ixy="0" ixz="0" iyy="0.364893736238929" iyz="-0.000386720198091934" izz="0.223868521722778"/>
+        </inertial>
+    </link>
+
+    <!-- base link -->
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <geometry>
+                <xacro:base_link></xacro:base_link>
+            </geometry>
+            <material name="base">
+                <color rgba="0.2 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="1.57 0 0"/>
+            <geometry>
+                <xacro:base_link></xacro:base_link>
+            </geometry>
+        </collision>
+    </link>
+
+
+    <!-- ************************************************** -->
+
+    <!-- FL castor joint link -->
+    <link name="fl_castor_link">
+        <visual>
+            <geometry>
+                <xacro:rl_castor_link></xacro:rl_castor_link>
+            </geometry>
+            <material name="fl_castor_link">
+                <color rgba="0.8 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <xacro:fl_castor_link></xacro:fl_castor_link>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.7171" ixy="0" ixz="0" iyy="0.1361" iyz="0" izz="0.7171" />
+        </inertial>
+    </link>
+
+    <!-- FR castor joint link -->
+    <link name="fr_castor_link">
+        <visual>
+            <geometry>
+                <xacro:fr_castor_link></xacro:fr_castor_link>
+            </geometry>
+            <material name="fr_castor_link">
+                <color rgba="0.8 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <xacro:fr_castor_link></xacro:fr_castor_link>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.7171" ixy="0" ixz="0" iyy="0.1361" iyz="0" izz="0.7171" />
+        </inertial>
+    </link>
+
+    <!-- BL castor joint link -->
+    <link name="bl_castor_link">
+        <visual>
+            <geometry>
+                <xacro:rl_castor_link></xacro:rl_castor_link>
+            </geometry>
+            <material name="bl_castor_link">
+                <color rgba="0.8 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <xacro:rl_castor_link></xacro:rl_castor_link>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.7171" ixy="0" ixz="0" iyy="0.1361" iyz="0" izz="0.7171" />
+        </inertial>
+    </link>
+
+    <!-- BR castor joint link -->
+    <link name="br_castor_link">
+        <visual>
+            <geometry>
+                <xacro:rr_castor_link></xacro:rr_castor_link>
+            </geometry>
+            <material name="br_castor_link">
+                <color rgba="0.8 0.2 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <xacro:rr_castor_link></xacro:rr_castor_link>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.7171" ixy="0" ixz="0" iyy="0.1361" iyz="0" izz="0.7171" />
+        </inertial>
+    </link>
+
+
+    <!-- ************************************************** -->
+
+    <!-- FL castor wheel -->
+    <link name="fl_castor_wheel">
+        <visual>
+            <geometry>
+                <xacro:fl_wheel_link></xacro:fl_wheel_link>
+            </geometry>
+            <material name="fl_castor_wheel">
+                <color rgba="0.4 0.4 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <xacro:fl_wheel_link></xacro:fl_wheel_link>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.3131" ixy="0" ixz="0" iyy="0.3131" iyz="0" izz="0.3161" />
+        </inertial>
+    </link>
+
+    <!-- FR castor wheel -->
+    <link name="fr_castor_wheel">
+        <visual>
+            <geometry>
+                <xacro:fr_wheel_link></xacro:fr_wheel_link>
+            </geometry>
+            <material name="fr_castor_wheel">
+                <color rgba="0.4 0.4 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <xacro:fr_wheel_link></xacro:fr_wheel_link>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.3131" ixy="0" ixz="0" iyy="0.3131" iyz="0" izz="0.3161" />
+        </inertial>
+    </link>
+
+    <!-- BL castor wheel -->
+    <link name="bl_castor_wheel">
+        <visual>
+            <geometry>
+                <xacro:rl_wheel_link></xacro:rl_wheel_link>
+            </geometry>
+            <material name="bl_castor_wheel">
+                <color rgba="0.4 0.4 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <xacro:rl_wheel_link></xacro:rl_wheel_link>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.3131" ixy="0" ixz="0" iyy="0.3131" iyz="0" izz="0.3161" />
+        </inertial>
+    </link>
+
+    <!-- BR castor wheel -->
+    <link name="br_castor_wheel">
+        <visual>
+            <geometry>
+                <xacro:rr_wheel_link></xacro:rr_wheel_link>
+            </geometry>
+            <material name="br_castor_wheel">
+                <color rgba="0.4 0.4 0.2 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <xacro:rr_wheel_link></xacro:rr_wheel_link>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.3131" ixy="0" ixz="0" iyy="0.3131" iyz="0" izz="0.3161" />
+        </inertial>
+    </link>
+
+    <!-- ************************************************** -->
+    <link name="L_wheel">
+        <visual>
+            <geometry>
+                <xacro:L_wheel_link></xacro:L_wheel_link>
+            </geometry>
+            <material name="L_wheel">
+                <color rgba="0.1 0.1 0.1 1"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <xacro:L_wheel_link></xacro:L_wheel_link>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="6" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.7171" ixy="0" ixz="0" iyy="0.1361" iyz="0" izz="0.7171" />
+        </inertial>
+    </link>
+
+    <link name="R_wheel">
+        <visual>
+            <geometry>
+                <xacro:R_wheel_link></xacro:R_wheel_link>
+            </geometry>
+            <material name="R_wheel">
+                <color rgba="0.1 0.1 0.1 1"/>
+            </material>
+        </visual>
+        <inertial>
+            <mass value="6" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.7171" ixy="0" ixz="0" iyy="0.1361" iyz="0" izz="0.7171" />
+        </inertial>
+        <collision>
+            <geometry>
+                <xacro:R_wheel_link></xacro:R_wheel_link>
+            </geometry>
+        </collision>
+    </link>
+</robot>

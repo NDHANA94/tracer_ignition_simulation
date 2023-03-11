@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="tracer">
+    <origin xyz="0 0 0.3" rpy="0 0 0"/>
+    <!-- links -->
+    <xacro:include filename="$(find tracer_ign_sim)/urdfs/tracer_links.xacro" />
+    <!-- joints -->
+    <xacro:include filename="$(find tracer_ign_sim)/urdfs/tracer_joints.xacro" />
+    
+    <!-- ros2 control -->
+    <xacro:include filename="$(find tracer_ign_sim)/urdfs/ros2_control.xacro"/>
+
+    <!-- <xacro:include filename="$(find tracer_ign_sim)/urdfs/gazebo.xacro"/> -->
+
+    <!-- <gazebo reference="L_wheel">
+        <mu1>0.2</mu1>
+    </gazebo> -->
+
+</robot>

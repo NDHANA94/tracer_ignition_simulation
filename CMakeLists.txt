@@ -17,9 +17,11 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(control_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(ros_ign_gazebo REQUIRED)
+find_package(geometry_msgs REQUIRED)
+
 
 # uncomment the following section in order to fill in
 # further dependencies manually.
@@ -38,9 +40,11 @@ endif()
 
 install(DIRECTORY
   ign
+  config
   launch
   models
   worlds
+  urdfs
   DESTINATION share/${PROJECT_NAME}/
   ) 
 

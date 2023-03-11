@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<robot>
+    
+    <joint name="base_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="inertial_link"/>
+    </joint>
+
+    <!-- ************************************************** -->
+    <!-- FL castor -->
+    <joint name="fl_castor_joint" type="continuous">
+        <origin xyz="0.18955 0.17 -0.0375886" rpy="-1.57 0 0"/> <!-- 0.0380886 -->
+        <parent link="base_link"/>
+        <child link="fl_castor_link"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+
+    <!-- FR castor -->
+    <joint name="fr_castor_joint" type="continuous">
+        <origin xyz="0.18955 -0.17 -0.0375886" rpy="-1.57 0 0"/>
+        <parent link="base_link"/>
+        <child link="fr_castor_link"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+    
+    <!-- BL castor -->
+    <joint name="bl_castor_joint" type="continuous">
+        <origin xyz="-0.18955 0.17 -0.0375886" rpy="-1.57 0 0"/>
+        <parent link="base_link"/>
+        <child link="bl_castor_link"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+   
+    <!-- BR castor -->
+    <joint name="br_castor_joint" type="continuous">
+        <origin xyz="-0.18955 -0.17 -0.0375886" rpy="-1.57 0 0"/>
+        <parent link="base_link"/>
+        <child link="br_castor_link"/>
+        <axis xyz="0 1 0"/>
+    </joint>
+
+
+    <!-- ************************************************** -->
+
+    <!-- FL Castor wheel -->
+    <joint name='fl_castor_wheel_joint' type='continuous'>
+        <origin xyz="-0.0218084 0.067 0" rpy="0 0 0"/>
+        <parent link="fl_castor_link"/>
+        <child link="fl_castor_wheel"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.2"/>
+    </joint>
+    
+    <!-- FR Castor wheel -->
+    <joint name='fr_castor_wheel_joint' type='continuous'>
+        <origin xyz="-0.0218084 0.067 0" rpy="0 0 0"/>
+        <parent link="fr_castor_link"/>
+        <child link="fr_castor_wheel"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+    <!-- BL Castor wheel -->
+    <joint name='bl_castor_wheel_joint' type='continuous'>
+        <origin xyz="-0.0218084 0.067 0" rpy="0 0 0"/>
+        <parent link="bl_castor_link"/>
+        <child link="bl_castor_wheel"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+    <!-- BR Castor wheel -->
+    <joint name='br_castor_wheel_joint' type='continuous'>
+        <origin xyz="-0.0218084 0.067 0" rpy="0 0 0"/>
+        <parent link="br_castor_link"/>
+        <child link="br_castor_wheel"/>
+        <axis xyz="0 0 1"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+
+    <!-- ************************************************** -->
+
+     <!-- Left wheel -->
+     <joint name='L_wheel_joint' type='continuous'>
+        <origin xyz="0 0.17 -0.082" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="L_wheel"/>
+        <axis xyz="0 1 0"/>
+        <dynamics damping="0.2"/>
+    </joint>
+
+    <!-- Right wheel -->
+    <joint name='R_wheel_joint' type='continuous'>
+        <origin xyz="0 -0.17 -0.082" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="R_wheel"/>
+        <axis xyz="0 1 0"/>
+        <dynamics damping="0.2"/>
+    </joint>
+</robot>
