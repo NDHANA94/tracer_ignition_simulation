@@ -3,11 +3,11 @@
 This package is created and tested only with ros2-foxy version!
 
 ### Setup
-* install ros2-foxy: https://docs.ros.org/en/foxy/Installation.html
-* install ignition fortress: https://gazebosim.org/docs/fortress/install_ubuntu
-* install ign-ros2-control: `apt install ros-$ROS_DISTRO-ign-ros2-control`
-* install ros-ign-gazebo: `sudo apt install ros-$ROS_DISTRO-ros-ign-gazebo`
-* install ros-ign-bridge: `sudo apt install ros-$ROS_DISTRO-ros-ign-bridge`
+* Install ros2-foxy: https://docs.ros.org/en/foxy/Installation.html
+* Install ignition fortress: https://gazebosim.org/docs/fortress/install_ubuntu
+* Install ign-ros2-control: `apt install ros-$ROS_DISTRO-ign-ros2-control`
+* Install ros-ign-gazebo: `sudo apt install ros-$ROS_DISTRO-ros-ign-gazebo`
+* Install ros-ign-bridge: `sudo apt install ros-$ROS_DISTRO-ros-ign-bridge`
 
 ### Install package
 ```
