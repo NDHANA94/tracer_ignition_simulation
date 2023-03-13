@@ -29,6 +29,6 @@ ros2 launch tracer_ign_sim tracer_ros2.launch.py
 
 ### controlling tracer robot via teleop_twist_keyboard
 ```
-ros2 run teleop_twist_keyboard teleop_twist_keyboard -_-ros-args -r /cmd_vel:=/tracer_controller/cmd_vel_unstamped
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/tracer_controller/cmd_vel_unstamped
 ```
 
