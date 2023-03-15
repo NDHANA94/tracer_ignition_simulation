@@ -1,4 +1,10 @@
 <?xml version="1.0"?>
+<!--   
+    ========================================  
+      * Author: nipun.dhananjaya@gmail.com  
+      * Created: 10.03.2023  
+    ========================================  
+-->
 <robot>
     
     <joint name="base_joint" type="fixed">
