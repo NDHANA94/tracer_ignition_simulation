@@ -1,6 +1,9 @@
 # tracer_ignition_simulation
-
 This package is created and tested only with ros2-foxy version!
+
+<!-- ![image](https://www.trossenrobotics.com/Shared/Images/Product/AgileX-Tracer-AGV/Tracer-side2.jpg) -->
+<img src="https://www.trossenrobotics.com/Shared/Images/Product/AgileX-Tracer-AGV/Tracer-side2.jpg" width="400" height="400">
+
 
 ### Setup
 * Install ros2-foxy: https://docs.ros.org/en/foxy/Installation.html
