@@ -8,6 +8,10 @@
 Command for testing: 
     keyboard: ros2 run teleop_twist_keyboard teleop_twist_keyboard -_-ros-args -r /cmd_vel:=/model/tracer/cmd_vel
     terminal cmd: ign topic -t "/model/tracer/cmd_vel" -m ignition.msgs.Twist -p "linear: {x: 0.5}, angular: {z: 0.05}
+    
+ 
+  * Listen to odometry:
+      - ign topic -e -t /model/tracer/odometry
 """
 import os
 

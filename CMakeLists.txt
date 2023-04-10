@@ -21,6 +21,7 @@ find_package(control_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(ign_ros2_control REQUIRED)
 
 
 # uncomment the following section in order to fill in

@@ -4,7 +4,12 @@
     * Created: 04.02.2023
 =========================================
 '''
+"""
+use below cmd to control robot: 
+ ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/tracer_controller/cmd_vel_unstamped
 
+
+"""
 import os
 
 from ament_index_python.packages import get_package_share_directory
