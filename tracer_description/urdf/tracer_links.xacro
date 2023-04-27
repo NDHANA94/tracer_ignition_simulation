@@ -5,44 +5,46 @@
       * Created: 10.03.2023  
     ========================================  
 -->
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tracer links">
 
     <!-- load meshes -->
     <xacro:macro name="base_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/tracer_base_link_no_wheel.dae"/>
+        <mesh filename="file://$(find tracer_description)/mesh/tracer/meshes/tracer_base_link_no_wheel.dae"/>
     </xacro:macro>
     <xacro:macro name="fl_castor_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
+        <mesh filename="file://$(find tracer_description)/mesh/tracer/meshes/castor_joint.dae"/>
     </xacro:macro>
     <xacro:macro name="fr_castor_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
+        <mesh filename="file://$(find tracer_description)/mesh/tracer/meshes/castor_joint.dae"/>
     </xacro:macro>
     <xacro:macro name="rl_castor_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
+        <mesh filename="file://$(find tracer_description)/mesh/tracer/meshes/castor_joint.dae"/>
     </xacro:macro>
     <xacro:macro name="rr_castor_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor_joint.dae"/>
+        <mesh filename="file://$(find tracer_description)/mesh/tracer/meshes/castor_joint.dae"/>
     </xacro:macro>
     <xacro:macro name="fl_wheel_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor.dae"/>
+        <mesh filename="file://$(find tracer_description)/mesh/tracer/meshes/castor.dae"/>
     </xacro:macro>
     <xacro:macro name="fr_wheel_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor.dae"/>
+        <mesh filename="file://$(find tracer_description)/mesh/tracer/meshes/castor.dae"/>
     </xacro:macro>
     <xacro:macro name="rl_wheel_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor.dae"/>
+        <mesh filename="file://$(find tracer_description)/mesh/tracer/meshes/castor.dae"/>
     </xacro:macro>
     <xacro:macro name="rr_wheel_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/castor.dae"/>
+        <mesh filename="file://$(find tracer_description)/mesh/tracer/meshes/castor.dae"/>
     </xacro:macro>
     <xacro:macro name="L_wheel_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/tracer_wheel.dae"/>
+        <mesh filename="file://$(find tracer_description)/mesh/tracer/meshes/tracer_wheel.dae"/>
     </xacro:macro>
     <xacro:macro name="R_wheel_link">
-        <mesh filename="file://$(find tracer_ign_sim)/models/tracer/meshes/tracer_wheel.dae"/>
+        <mesh filename="file://$(find tracer_description)/mesh/tracer/meshes/tracer_wheel.dae"/>
     </xacro:macro>
 
 
+    
+    <link name="base_footprint"></link>
 
     <!-- Initial Link -->
     <link name="inertial_link">
@@ -71,7 +73,15 @@
                 <xacro:base_link></xacro:base_link>
             </geometry>
         </collision>
+        <sensor name="imu_sensor" type="imu">
+            <always_on>1</always_on>
+            <update_rate>1</update_rate>
+            <visualize>true</visualize>
+            <topic>imu</topic>
+        </sensor>
     </link>
+
+    
 
 
     <!-- ************************************************** -->
@@ -297,4 +307,6 @@
             </geometry>
         </collision>
     </link>
+
+    
 </robot>

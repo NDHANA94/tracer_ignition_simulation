@@ -4,12 +4,7 @@
     * Created: 04.02.2023
 =========================================
 '''
-"""
-use below cmd to control robot: 
- ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/tracer_controller/cmd_vel_unstamped
 
-
-"""
 import os
 
 from ament_index_python.packages import get_package_share_directory
@@ -27,10 +22,11 @@ import xacro
 
 def generate_launch_description():
     pkg_ros_ign_gazebo = get_package_share_directory('ros_ign_gazebo')
-    pkg_tracer_ign = get_package_share_directory('tracer_ign_sim')
-
+    this_pkg = get_package_share_directory('tracer_ign_sim')
+    akula_description_pkg = get_package_share_directory('tracer_description')
+    rviz_config_file = os.path.join(this_pkg, 'rviz', 'default.rviz')
     # --------- xacro process -------------------------------------------------------------------------
-    xacro_file = os.path.join(get_package_share_directory('tracer_ign_sim'), 'urdfs/tracer.urdf.xacro')
+    xacro_file = os.path.join(akula_description_pkg, 'urdf/tracer.urdf.xacro')
     doc = xacro.parse(open(xacro_file))
     xacro.process_doc(doc)
     params = {'robot_description': doc.toxml(), 'use_sim_time':True}
@@ -60,15 +56,38 @@ def generate_launch_description():
         cmd=['ros2', 'control', 'load_controller', '--set-state', 'start', 'tracer_controller'],
         output='screen'
     )
-    # publish time
+
+    odom_static_tf_pub = ExecuteProcess(
+        cmd=['ros2', 'run', 'tf2_ros', 'static_transform_publisher', "0", "0", "0", "0", "0", "0", "odom", "base_footprint"],
+        output='screen'
+    )
+    
+    #  time bridge
     clock_bridge = Node(
         package='ros_ign_bridge',
         executable='parameter_bridge',
         arguments=['/clock@rosgraph_msgs/msg/Clock[ignition.msgs.Clock'],
         output='screen'
     )
+
+    # imu bridge
+    imu_bridge = Node(
+        package='ros_ign_bridge',
+        executable='parameter_bridge',
+        arguments=['/imu@sensor_msgs/msg/Imu[ignition.msgs.IMU'],
+        output='screen'
+    )
+
     # use time
     use_sim_time = LaunchConfiguration('use_sim_time', default=True)
+
+
+    run_rviz2 = Node(
+        package='rviz2',
+        executable='rviz2',
+        arguments=['-d', rviz_config_file],
+        output='screen'
+    )
 
     return LaunchDescription([
         # launch ignition gazebo
@@ -94,6 +113,9 @@ def generate_launch_description():
         clock_bridge,
         node_robot_state_publisher,
         ign_spawn_entity,
+        odom_static_tf_pub,
+        imu_bridge,
+        run_rviz2,
         # Launch arguments
         DeclareLaunchArgument(
             'use_sim_time',

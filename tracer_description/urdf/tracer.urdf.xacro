@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--  
+   ======================================== 
+     * Author: nipun.dhananjaya@gmail.com 
+     * Created: 10.03.2023 
+   ======================================== 
+-->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="tracer">
+    <origin xyz="0 0 0.3" rpy="0 0 0"/>
+    <!-- links -->
+    <xacro:include filename="$(find tracer_description)/urdf/tracer_links.xacro" />
+    <!-- joints -->
+    <xacro:include filename="$(find tracer_description)/urdf/tracer_joints.xacro" />
+    
+    <!-- ros2 control -->
+    <xacro:include filename="$(find tracer_description)/urdf/ros2_control.xacro"/>
+
+    <!-- gazebo -->
+    <xacro:include filename="$(find tracer_description)/urdf/gazebo.xacro"/>
+
+    <!-- imu -->
+    <xacro:include filename="$(find tracer_description)/urdf/imu.xacro"/>
+
+</robot>

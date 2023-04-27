@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--   
+    ========================================  
+      * Author: nipun.dhananjaya@gmail.com  
+      * Created: 04.2023  
+    ========================================  
+-->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="imu">
+
+    <gazebo reference="base_footprint">
+        <sensor name="imu_sensor" type="imu">
+            <always_on>1</always_on>
+            <update_rate>10</update_rate>
+            <visualize>true</visualize>
+            <topic>imu</topic>
+            <plugin
+                filename="libignition-gazebo-imu-system.so"
+                name="ignition::gazebo::systems::Imu">
+            </plugin> 
+        </sensor>
+    </gazebo>
+
+</robot>

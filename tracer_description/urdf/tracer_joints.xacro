@@ -5,13 +5,21 @@
       * Created: 10.03.2023  
     ========================================  
 -->
-<robot>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="tracer joints">
     
+    <joint name="base_footprint_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0" pry="0 0 0"/>
+    </joint>
+
     <joint name="base_joint" type="fixed">
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <parent link="base_link"/>
         <child link="inertial_link"/>
     </joint>
+
+    
 
     <!-- ************************************************** -->
     <!-- FL castor -->
@@ -108,4 +116,10 @@
         <axis xyz="0 1 0"/>
         <dynamics damping="0.2"/>
     </joint>
+
+
+    
+
+
+
 </robot>

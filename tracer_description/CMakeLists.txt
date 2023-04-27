@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(tracer_ign_sim)
+project(tracer_description)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -21,7 +21,8 @@ find_package(control_msgs REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
-find_package(ign_ros2_control REQUIRED)
+
+
 
 
 # uncomment the following section in order to fill in
@@ -40,12 +41,10 @@ if(BUILD_TESTING)
 endif()
 
 install(DIRECTORY
-  ign
-  config
   launch
-  models
-  worlds
-  urdfs
+  mesh
+  urdf
+  rviz
   DESTINATION share/${PROJECT_NAME}/
   ) 
 

@@ -5,7 +5,8 @@
       * Created: 10.03.2023  
     ========================================  
 -->
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="gazebo">
+    
     <gazebo reference="fl_wheel_link">
         <mu1>1</mu1>
         <mu2>1</mu2>
