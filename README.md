@@ -1,80 +1,38 @@
-# ROS2 Packages for Tracer Mobile Robot
+# tracer_ignition_simulation
+This package is created and tested only with ros2-foxy version!
 
-## Packages
+<!-- ![image](https://www.trossenrobotics.com/Shared/Images/Product/AgileX-Tracer-AGV/Tracer-side2.jpg) -->
+<img src="https://www.trossenrobotics.com/Shared/Images/Product/AgileX-Tracer-AGV/Tracer-side2.jpg" width="400" height="400">
 
-This repository contains minimal packages to control the tracer robot using ROS. 
 
-* tracer_base: a ROS wrapper around [ugv_sdk](https://github.com/westonrobot/ugv_sdk) to monitor and control the tracer robot
-* tracer_msgs: tracer related message definitions
-* tracer_ign_sim: ignition gazebo simulation
+### Setup
+* Install ros2-foxy: https://docs.ros.org/en/foxy/Installation.html
+* Install ignition fortress: https://gazebosim.org/docs/fortress/install_ubuntu
+* Install ign-ros2-control: `apt install ros-$ROS_DISTRO-ign-ros2-control`
+* Install ros-ign-gazebo: `sudo apt install ros-$ROS_DISTRO-ros-ign-gazebo`
+* Install ros-ign-bridge: `sudo apt install ros-$ROS_DISTRO-ros-ign-bridge`
 
-## Supported Hardware
+### Install package
+```
+mkdir -p tracer_ws/src
+cd tracer_ws/src
+git clone https://github.com/NDHANA94/tracer_ignition_simulation.git
+git clone --branch foxy https://github.com/ros-controls/gz_ros2_control.git ign_ros2_control
+rosdep install -r --from-paths . --ignore-src --rosdistro $ROS_DISTRO -y
+cd ..
+echo "export IGNITION_VERSION=fortress">> ~/.bashrc
+source ~/.bashrc
+colcon build
+```
 
-* Tracer
-* Tracer-mini
+### launch ignition gazebo simulation
+```
+source install/setup.bash
+ros2 launch tracer_ign_sim tracer_ros2.launch.py
+```
 
-## Basic usage of the ROS packages
+### controlling tracer robot via teleop_twist_keyboard
+```
+ros2 run teleop_twist_keyboard teleop_twist_keyboard --ros-args -r /cmd_vel:=/tracer_controller/cmd_vel_unstamped
+```
 
-1. Clone the packages into your colcon workspace and compile
-
-    (the following instructions assume your catkin workspace is at: ~/ros2_ws/src)
-
-    ```
-    $ mkdir -p ~/ros2_ws/src
-    $ cd ~/ros2_ws/src
-    $ git clone https://github.com/westonrobot/ugv_sdk.git
-    $ git clone https://github.com/agilexrobotics/tracer_ros2.git
-    $ cd ..
-    $ colcon build
-    ```
-2. Setup CAN-To-USB adapter
-
-* Enable gs_usb kernel module(If you have already added this module, you do not need to add it)
-    ```
-    $ sudo modprobe gs_usb
-    ```
-    
-* first time use tracer-ros2 package
-   ```
-   $ cd ~/your_ws/src/ugv_sdk/scripts/
-   $ bash setup_can2usb.bash
-   ```
-   
-* if not the first time use tracer-ros2 package(Run this command every time you turn off the power) 
-   ```
-   $ cd ~/ros2_ws/src/ugv_sdk/scripts/
-   $ bash bringup_can2usb_500k.bash
-   ```
-   
-* Testing command
-    ```
-    # receiving data from can0
-    $ candump can0
-    ```
-3. Launch ROS nodes
- 
-* Start the base node for the Tracer robot
-
-    ```
-    $ ros2 launch tracer_base tracer_base.launch.py
-    ```
-    or
-     ```
-    $ ros2 launch tracer_base tracer_mini_base.launch.py
-    ```
-
-* Then you can send command to the robot
-    ```
-    $ ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "linear:
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    angular:
-    x: 0.0
-    y: 0.0
-    z: 0.0" 
-
-    ```
-**SAFETY PRECAUSION**: 
-
-Always have your remote controller ready to take over the control whenever necessary. 
